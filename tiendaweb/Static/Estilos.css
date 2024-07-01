@@ -1,0 +1,13 @@
+.navbar {
+ margin-bottom: 20px;
+}
+
+.navbar-expand-lg { 
+background-color: #161616;
+}
+
+#carouselExampleFade.carousel {
+    width: 1500px;
+    margin-left: 170px;
+     
+  }
