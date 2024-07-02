@@ -20,5 +20,6 @@ class Cliente(models.Model):
     email = models.EmailField(unique=True, max_length=100, blank=True, null=True)
     direccion = models.CharField(max_length=50, blank=True, null=True)
     activo = models.IntegerField()
+
     def __str__(self):
-        return str(self.nombre)+" "+str(self.apellido_paterno)
+        return f"{self.nombre} {self.apellido_paterno}"
