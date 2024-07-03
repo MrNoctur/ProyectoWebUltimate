@@ -1,13 +1,8 @@
-.navbar {
- margin-bottom: 20px;
+#carouselIndex {
+  width: 900px;
 }
 
-.navbar-expand-lg { 
-background-color: #161616;
+#myCarousel img {
+  object-fit: contain; /* Or 'contain' if you don't want stretching */
+  
 }
-
-#carouselExampleFade.carousel {
-    width: 1500px;
-    margin-left: 170px;
-     
-  }

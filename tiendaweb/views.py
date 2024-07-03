@@ -4,7 +4,7 @@ from .models import Cliente
 
 def home(request):
     context={}
-    return render(request, 'tiendaweb/index.html', context)
+    return render(request, 'index.html', context)
 
 
 def registro_cliente(request):
@@ -16,7 +16,7 @@ def registro_cliente(request):
         
     else:
         form  = ClienteForm()
-    return render(request, 'clientes/registro_cliente.html',{'form': form}) 
+    return render(request, 'registro_cliente.html',{'form': form}) 
 
 #te dejo comentado el avance
 
