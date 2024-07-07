@@ -23,7 +23,7 @@ def registro_cliente(request):
 # Vista para listar todos los clientes
 def lista_clientes(request):
     clientes = Cliente.objects.all()
-    return render(request, 'clientes/lista_clientes.html', {'clientes': clientes})
+    return render(request, 'lista_clientes.html', {'clientes': clientes})
 
 # Vista para ver los detalles de un cliente específico
 def detalle_cliente(request, pk):
@@ -37,10 +37,10 @@ def editar_cliente(request, pk):
         form = ClienteForm(request.POST, instance=cliente)
         if form.is_valid():
             form.save()
-            return redirect('lista_clientes')
+            return redirect('clientes/lista_clientes')
     else:
         form = ClienteForm(instance=cliente)
-    return render(request, 'clientes/registro_cliente.html', {'form': form})
+    return render(request, 'registro_cliente.html', {'form': form})
 
 # Vista para eliminar un cliente
 def eliminar_cliente(request, pk):
