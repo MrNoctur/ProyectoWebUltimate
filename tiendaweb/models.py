@@ -23,3 +23,32 @@ class Cliente(models.Model):
 
     def __str__(self):
         return f"{self.nombre} {self.apellido_paterno}"
+    
+
+
+# se agrega el model del producto y del carrito    
+    
+
+class Producto(models.Model):
+    nombre = models.CharField(max_length=100)
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    stock = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.nombre
+    
+
+class Carrito(models.Model):
+    total = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+
+class ItemCarrito(models.Model):
+    carrito = models.ForeignKey(Carrito, related_name='items', on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default=1)
+    subtotal = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def save(self, *args, **kwargs):
+        self.subtotal = self.cantidad * self.producto.precio
+        super().save(*args, **kwargs)
+        self.carrito.total = sum(item.subtotal for item in self.carrito.items.all())
+        self.carrito.save()

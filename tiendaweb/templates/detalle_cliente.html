@@ -1,0 +1,16 @@
+{% extends "plantillaBase.html" %}
+
+{% block body %}
+    <h2>Detalle de Cliente</h2>
+    <p>RUT: {{ cliente.rut }}</p>
+    <p>Nombre: {{ cliente.nombre }}</p>
+    <p>Apellido Paterno: {{ cliente.apellido_paterno }}</p>
+    <p>Apellido Materno: {{ cliente.apellido_materno }}</p>
+    <p>Fecha de Nacimiento: {{ cliente.fecha_nacimiento }}</p>
+    <p>Género: {{ cliente.id_genero }}</p>
+    <p>Teléfono: {{ cliente.telefono }}</p>
+    <p>Email: {{ cliente.email }}</p>
+    <p>Dirección: {{ cliente.direccion }}</p>
+    <p>Activo: {{ cliente.activo }}</p>
+    <a href="{% url 'lista_clientes' %}">Volver a la lista</a>
+{% endblock %}
