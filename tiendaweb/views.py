@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import ClienteForm
-from .models import Cliente
+from .forms import ClienteForm, AgregarAlCarritoForm, ActualizarCantidadForm
+from .models import Cliente, Producto, Carrito, ItemCarrito
 
 def home(request):
     context={}
@@ -49,4 +49,13 @@ def eliminar_cliente(request, pk):
         cliente.delete()
         return redirect('lista_clientes')
     return render(request, 'clientes/eliminar_cliente.html', {'cliente': cliente})
+
+
+#productos
+
+def listar_productos(request):
+    productos = Producto.objects.all()
+    return render(request, 'tiendaweb/listar_productos.html', {'productos': productos})
+
+
 
