@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.hashers import make_password
 
 # Create your models here.
 
@@ -11,6 +12,8 @@ class generoCli(models.Model):
     
 class Cliente(models.Model):
     rut = models.CharField(primary_key=True, max_length=10)
+    username = models.CharField(max_length=100, unique=True)
+    password = models.CharField(max_length=100)
     nombre = models.CharField(max_length=20)
     apellido_paterno = models.CharField(max_length=20)
     apellido_materno = models.CharField(max_length=20)
@@ -20,6 +23,10 @@ class Cliente(models.Model):
     email = models.EmailField(unique=True, max_length=100, blank=True, null=True)
     direccion = models.CharField(max_length=50, blank=True, null=True)
     activo = models.IntegerField()
+
+    def save(self, *args, **kwargs):
+        self.password = make_password(self.password)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.nombre} {self.apellido_paterno}"

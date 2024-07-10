@@ -25,3 +25,7 @@ class EliminarItemForm(forms.ModelForm):
     class Meta:
         model = ItemCarrito
         fields = []
+
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=100)
+    password = forms.CharField(widget=forms.PasswordInput)
