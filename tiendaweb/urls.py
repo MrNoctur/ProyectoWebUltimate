@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import registro, perfil, index
+from .views import registro, perfil, index, lista_productos
 from . import views
   # Importar las vistas
 
@@ -12,4 +12,5 @@ urlpatterns = [
     path('carrito/', views.ver_carrito, name='carrito'),
     path('carrito/finalizar-compra/', views.finalizar_compra, name='finalizar_compra'),
     path('carrito/eliminar/<int:producto_id>/', views.eliminar_producto, name='eliminar_producto'),
+    path('productos/', lista_productos, name='productos'),
 ]

@@ -15,7 +15,7 @@ def registro(request):
             return redirect('index')
 
     form = RegistroForm()
-    return render(request, 'tiendaweb/registro.html', {'form': form})
+    return render(request, 'registro.html', {'form': form})
 
 # Vista para el perfil de usuario (ejemplo)
 def perfil(request):
@@ -62,6 +62,14 @@ def ver_carrito(request):
         'productos_en_carrito': productos_en_carrito
     }
     return render(request, 'carrito.html', context)
+
+
+def lista_productos(request):
+    productos = Producto.objects.all()
+    context = {
+        'productos': productos
+    }
+    return render(request, 'productos.html', context)
 
 def eliminar_producto(request, producto_id):
     producto = get_object_or_404(Producto, pk=producto_id)
