@@ -8,43 +8,120 @@
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+      .navbar {
+          width: 1370px; /* Ajusta el ancho aquí */
+          margin-top: -16px;
+          margin-left: -20px;
+          margin-right: auto;
+      }
+
+      /* Estilos para el footer */
+      footer {
+        background-color: #000000;
+        margin-left: -20px;
+        text-align: right;
+        width: 1370px;
+      }
+
+      .container {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .footer-content {
+        margin-left: 20px;
+      }
+
+      .footer-content ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-content p {
+        margin: 5px 0;
+        color: white;
+      }
+
+      .footer-content h3 {
+        color: azure;
+      }
+    </style>
   </head>
   <body class="p-3 m-0 border-0 bd-example m-0 border-0">
-
-    <!-- Example Code -->
-    
-        
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+   
+    <nav class="navbar navbar-expand-lg bg-body-tertiary"  data-bs-theme="dark" >
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">~STYLE-SPOT~</a>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="navbar-collapse collapse" id="navbarTogglerDemo02" style="">
+        <div class="navbar-collapse collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link active" href="{% url 'registro' %}">Registro</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              <a class="nav-link active" aria-disabled="true">Productos</a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+          {% if user.is_authenticated %}
+            <form class="d-flex">
+              <a href="{% url 'logout' %}" class="btn btn-danger btn-rounded">Logout</a>
+            </form>
+          {% else %}
+            <form class="d-flex">
+              <a href="{% url 'login' %}" class="btn btn-primary btn-rounded">Login</a>
+            </form>
+          {% endif %}
         </div>
       </div>
     </nav>
-    
-{% block body %}
 
-{% endblock  %}
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-      <script src="{% static 'main.js' %}"></script>
+    {% block body %}
+    {% endblock %}
+
+    <footer>
+      <div class="container" style="width: 1370px;">
+        <div class="row">
+          <div class="col-md-4 footer-content">
+            <h3>Información de contacto</h3>
+            <p>Dirección: 123 Calle Principal, Ciudad, País</p>
+            <p>Teléfono: +1234567890</p>
+            <p>Correo electrónico: info@ejemplo.com</p>
+          </div>
+          <div class="col-md-4 footer-content">
+            <h3>Enlaces útiles</h3>
+            <ul>
+              <li><a href="#">Inicio</a></li>
+              <li><a href="#">Acerca de nosotros</a></li>
+              <li><a href="#">Servicios</a></li>
+              <li><a href="#">Contacto</a></li>
+              <li><a href="#">Garantía de productos</a></li>
+              <li><a href="#">Recuperar boleta</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4 footer-content">
+            <h3>Síguenos en redes sociales</h3>
+            <ul class="list-unstyled d-flex">
+              <li><a href="#"><img src="{% static 'img/fb.png' %}" alt="" style="width: 30px;"></a></li>
+              <li><a href="#"><img src="{% static 'img/x.jpg' %}" alt="" style="width: 30px;"></a></li>
+              <li><a href="#"><img src="{% static 'img/ig.png' %}" alt="" style="width: 30px;"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-3">
+        <p>&copy; 2024 Mi Empresa. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'main.js' %}"></script>
       
   </body>
 </html>

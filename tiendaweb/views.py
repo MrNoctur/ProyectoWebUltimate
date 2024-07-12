@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
-from .forms import RegistroForm
+from django.contrib.auth import login, authenticate, logout
+from .forms import RegistroForm, LoginForm
 
 def registro(request):
     if request.method == 'POST':

@@ -1,26 +1,63 @@
 {% extends "plantillaBase.html" %}
 
 {% block body %}
-<div id="carouselIndex" class="carousel slide carousel-fade">
+<div id="carouselIndex" class="carousel slide" style="width: 1370px; overflow: hidden; margin-left: -20px;">
     <div class="carousel-inner">
-      <div class="carousel-item">
-        <img src="https://media.gq.com.mx/photos/63b468513105d93f46dc2e00/3:2/w_2630,h_1753,c_limit/tendencias-de-moda-para-hombre-2023.jpg" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#555" dy=".3em"></text></svg>
-      </div>
-      <div class="carousel-item">
-        <img src="https://media.blackandwhite-ff.com/10000/10000/43fff22f-c53d-4bb1-9028-6e45977e28c6_capa.jpg" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"></rect><text x="50%" y="50%" fill="#444" dy=".3em"></text></svg>
-      </div>
-      <div class="carousel-item active">
-        <img src="https://poluxweb.com/Polux3/images/data/misc/moda/2023/enero/Noticias/17-puma-ami.jpg" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"></rect><text x="50%" y="50%" fill="#333" dy=".3em"></text></svg>
-      </div>
+        <div class="carousel-item">
+            <img src="https://media.gq.com.mx/photos/63b468513105d93f46dc2e00/3:2/w_2630,h_1753,c_limit/tendencias-de-moda-para-hombre-2023.jpg" class="d-block w-100" style="object-fit: cover; height: 500px;">
+        </div>
+        <div class="carousel-item">
+            <img src="https://media.blackandwhite-ff.com/10000/10000/43fff22f-c53d-4bb1-9028-6e45977e28c6_capa.jpg" class="d-block w-100" style="object-fit: cover; height: 500px;">
+        </div>
+        <div class="carousel-item active">
+            <img src="https://poluxweb.com/Polux3/images/data/misc/moda/2023/enero/Noticias/17-puma-ami.jpg" class="d-block w-100" style="object-fit: cover; height: 500px;">
+        </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndex" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carouselIndex" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
     </button>
-  </div>
+</div>
 
-{% endblock  %}
+<section style="width: 1360px; margin-left: -10px;">
+  <div class="container mt-5 mb-5">
+      <div class="row justify-content-center">
+          <div class="col-12 col-sm-6 col-md-4 mb-4">
+              <div class="card">
+                  <div title="moda otoño" class="cover cover-peque" style="background-image: url(https://blog.santaeulalia.com/wp-content/uploads/2021/12/ropa-lujo-hombre.jpg);"></div>
+                  <div class="card-body">
+                      <h5 class="card-title">Mira nuestras ofertas</h5>
+                      <p class="card-text">Nuestra nueva colección otoño temporada 2024</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 mb-4">
+              <div class="card">
+                  <div title="ropa moderna" class="cover cover-peque" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuR4kBxVCGdODjgvsVqYoO-cpuZT4cusPTmg&usqp=CAU);"></div>
+                  <div class="card-body">
+                      <h5 class="card-title">Ropa a la moda que gustes</h5>
+                      <p class="card-text">Mucha variedad en estilos de ropa moderna 2024</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 mb-4">
+              <div class="card">
+                  <div title="nuevas marcas" class="cover cover-peque" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGDfkgbOOYGJn6PwbOs5R-MIUd-i5YDDJgOA&usqp=CAU);"></div>
+                  <div class="card-body">
+                      <h5 class="card-title">Mira las nuevas marcas</h5>
+                      <p class="card-text">Observa la nueva llegada de nuestros auspiciadores</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+
+
+{% endblock %}

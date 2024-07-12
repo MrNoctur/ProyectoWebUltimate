@@ -4,6 +4,8 @@ from django.contrib.auth.hashers import make_password
 class Usuario(models.Model):
     nombre = models.CharField(max_length=255)
     apellido = models.CharField(max_length=255)
+    username = models.CharField(max_length=100, unique=True)
+    password = models.CharField(max_length=100)
     correo_electronico = models.EmailField(unique=True)
     contrasena = models.CharField(max_length=128)
 
