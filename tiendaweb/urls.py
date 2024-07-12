@@ -9,5 +9,7 @@ urlpatterns = [
     path('perfil/', perfil, name='perfil'),  # Ruta para la vista de perfil
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
-
+    path('carrito/', views.ver_carrito, name='carrito'),
+    path('carrito/finalizar-compra/', views.finalizar_compra, name='finalizar_compra'),
+    path('carrito/eliminar/<int:producto_id>/', views.eliminar_producto, name='eliminar_producto'),
 ]
