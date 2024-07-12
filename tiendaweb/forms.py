@@ -1,27 +1,9 @@
 from django import forms
-from .models import Cliente, ItemCarrito
+from .models import Usuario
 
-class ClienteForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
-
+class RegistroForm(forms.ModelForm):
     class Meta:
-        model = Cliente
-        fields = [
-            'rut', 'nombre', 'apellido_paterno', 'apellido_materno',
-            'fecha_nacimiento', 'id_genero', 'telefono', 'email', 'direccion', 'activo', 'password'
-        ]
+        model = Usuario
+        fields = ['nombre', 'apellido', 'correo_electronico', 'contrasena']
 
-class AgregarAlCarritoForm(forms.ModelForm):
-    class Meta:
-        model = ItemCarrito
-        fields = ['producto', 'cantidad']
-
-class ActualizarCantidadForm(forms.ModelForm):
-    class Meta:
-        model = ItemCarrito
-        fields = ['cantidad']
-
-class EliminarItemForm(forms.ModelForm):
-    class Meta:
-        model = ItemCarrito
-        fields = []
+    # Opcional: agregar validadores personalizados para los campos del formulario
