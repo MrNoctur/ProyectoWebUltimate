@@ -57,15 +57,22 @@ def logout_view(request):
 def ver_carrito(request):
     carrito_usuario = Carrito.objects.get(usuario=request.user)
     productos_en_carrito = carrito_usuario.productos.all()
-    
     context = {
         'productos_en_carrito': productos_en_carrito
     }
     return render(request, 'carrito.html', context)
 
 
+
 def lista_productos(request):
     productos = Producto.objects.all()
+
+    Producto.objects.get_or_create(
+        nombre="Zapatillas",
+        descripcion="Descripción de las zapatillas.",
+        precio=59.99
+    )
+
     context = {
         'productos': productos
     }
@@ -73,25 +80,40 @@ def lista_productos(request):
 
 def eliminar_producto(request, producto_id):
     producto = get_object_or_404(Producto, pk=producto_id)
-
-    # Verificar si el producto está en el carrito del usuario
-    if request.user.carrito.filter(id=producto.id).exists():
-        request.user.carrito.remove(producto)
+    carrito = Carrito.objects.get(usuario=request.user)
+    if carrito.productos.filter(id=producto.id).exists():
+        carrito.productos.remove(producto)
         messages.success(request, f'El producto "{producto.nombre}" ha sido eliminado del carrito.')
     else:
         messages.error(request, 'El producto no está en tu carrito.')
-
     return redirect('carrito')
 
 def finalizar_compra(request):
-    # Lógica para finalizar la compra (ejemplo: limpiar el carrito, procesar pago, etc.)
-    # Aquí puedes agregar la lógica necesaria para finalizar la compra según tu aplicación
-
-    # Ejemplo: Limpiar el carrito (borrar todos los productos del carrito)
     request.user.carrito.clear()
 
     # Mostrar mensaje de éxito
     messages.success(request, '¡Gracias por tu compra! Tu pedido ha sido procesado correctamente.')
 
-    # Redirigir a una página de confirmación o a la página principal
+    # Redirigir a la página principal
     return redirect('index')
+
+def agregar_al_carrito(request, producto_id):
+    producto = get_object_or_404(Producto, pk=producto_id)
+    carrito, _ = Carrito.objects.get_or_create(usuario=request.user)
+    carrito.productos.add(producto)
+    return redirect('carrito')
+
+def aumentar_cantidad(request, producto_id):
+    carrito = Carrito.objects.get(usuario=request.user)
+    producto = carrito.productos.get(pk=producto_id)
+    producto.cantidad += 1
+    producto.save()
+    return redirect('carrito')
+
+def disminuir_cantidad(request, producto_id):
+    carrito = Carrito.objects.get(usuario=request.user)
+    producto = carrito.productos.get(pk=producto_id)
+    if producto.cantidad > 1:
+        producto.cantidad -= 1
+        producto.save()
+    return redirect('carrito')

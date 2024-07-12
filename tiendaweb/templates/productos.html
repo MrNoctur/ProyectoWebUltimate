@@ -12,7 +12,10 @@
         <div class="card-body">
           <h5 class="card-title">{{ producto.nombre }}</h5>
           <p class="card-text">${{ producto.precio }}</p>
-          <a href="{% url 'agregar_al_carrito' producto.id %}" class="btn btn-primary">Agregar al Carrito</a>
+          <form action="{% url 'agregar_al_carrito' producto.id %}" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-primary" value="Agregar al Carrito">
+          </form>
         </div>
       </div>
     </div>
